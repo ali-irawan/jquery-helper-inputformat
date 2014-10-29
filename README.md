@@ -35,11 +35,13 @@ This sample HTML
 ```
 Put some Javascript
 ```javascript
+
 	<script>
 		$(document).ready(function(){
 			$('#default').inputNumber();
 		});
 	</script>
+
 ```
 
 [More demo here](http://www.solusiteknologi.co.id/projects/jquery-inputformat)

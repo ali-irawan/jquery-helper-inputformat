@@ -1,7 +1,13 @@
 <html>
 	<head>
+		<title>jQuery InputFormat</title>
+		<meta name="description" content="Javascript library for formatting number input" />
+		<meta name="robots" content="index,follow" />
+		<meta name="keywords" content="jquery,input,numeric,number,format,mask,amount,free" />
 		<link rel="stylesheet" href="css/style.css" />
 		<link rel="stylesheet" href="css/syntax.css" />
+		<link rel="stylesheet" href="css/bootstrap.min.css" />
+		<link rel="stylesheet" href="css/bootstrap-theme.min.css" />
 
 		<script src="lib/jquery-1.11.0.min.js"></script>
 		<script src="lib/rainbow-custom.min.js"></script>
@@ -18,9 +24,17 @@
 		</script>
 	</head>
 	<body>
-		<div class="wrapper">
+		<div class="container">
 			<h1>jQuery InputFormat Demo</h1>
-			<div>
+			<h2>Downloads</h2>
+			<div class="pad">
+				<a class="btn btn-primary" href="https://github.com/ali-irawan/jquery-inputformat/blob/master/dist/jquery-inputformat.min.js" target="_blank">Download Production Version</a>
+				<a class="btn btn-warning" href="https://github.com/ali-irawan/jquery-inputformat/blob/master/dist/jquery-inputformat.js" target="_blank">Download Development Version</a>
+			</div>	
+			<div class="pad">
+				<a class="btn btn-default" href="https://github.com/ali-irawan/jquery-inputformat">Visit on Github</a>
+			</div>	
+			<div class="panel panel-default container pad">
 				<p>Input default</p>	
 				<ul>
 					<li>allowDecimals: <b>true</b></li>
@@ -30,14 +44,13 @@
 					<li>decimalSep: <b>.</b></li>
 					<li>maxDecimalDigits: <b>unlimited</b></li>
 				</ul>
-				<pre><code data-language="javascript">
-					$(document).ready(function(){
-						$('#default').inputNumber();
-					});
-				</code></pre>
-				<input id="default" type="text" style="width: 500px" placeholder="Default" />		
+				<pre><code data-language="javascript">$(document).ready(function(){
+	$('#default').inputNumber();
+});</code></pre>
+				<input id="default" type="text" style="width: 500px" placeholder="Default" class="form-control" />		
 			</div>
-			<div>
+			
+			<div class="panel panel-default container pad">
 				<p>Input without <b>Negative value</b></p>	
 				<ul>
 					<li>allowDecimals: <b>true</b></li>
@@ -47,14 +60,12 @@
 					<li>decimalSep: <b>.</b></li>
 					<li>maxDecimalDigits: <b>unlimited</b></li>
 				</ul>
-				<pre><code data-language="javascript">
-					$(document).ready(function(){
-						$('#no-negative').inputNumber({ allowNegative: false });
-					});
-				</code></pre>
-				<input id="no-negative" type="text" style="width: 500px" placeholder="No negative" />		
+				<pre><code data-language="javascript">$(document).ready(function(){
+	$('#no-negative').inputNumber({ allowNegative: false });
+});</code></pre>
+				<input id="no-negative" type="text" style="width: 500px" placeholder="No negative" class="form-control" />		
 			</div>
-			<div>
+			<div class="panel panel-default container pad">
 				<p>Input without <b>Decimals value</b></p>	
 				<ul>
 					<li>allowDecimals: <b>false</b></li>
@@ -64,14 +75,12 @@
 					<li>decimalSep: <b>.</b></li>
 					<li>maxDecimalDigits: <b>unlimited</b></li>
 				</ul>
-				<pre><code data-language="javascript">
-					$(document).ready(function(){
-						$('#no-decimal-negative').inputNumber({ allowDecimals: false, allowNegative: false });
-					});
-				</code></pre>
-				<input id="no-decimal-negative" type="text" style="width: 500px" placeholder="No decimals, No negative" />		
+				<pre><code data-language="javascript">$(document).ready(function(){
+	$('#no-decimal-negative').inputNumber({ allowDecimals: false, allowNegative: false });
+});</code></pre>
+				<input id="no-decimal-negative" type="text" style="width: 500px" placeholder="No decimals, No negative" class="form-control" />		
 			</div>
-			<div>
+			<div class="panel panel-default container pad">
 				<p>Max <b>Decimals value</b> 2 point </p>	
 				<ul>
 					<li>allowDecimals: <b>true</b></li>
@@ -81,14 +90,12 @@
 					<li>decimalSep: <b>.</b></li>
 					<li>maxDecimalDigits: <b>2</b></li>
 				</ul>
-				<pre><code data-language="javascript">
-					$(document).ready(function(){
-						$('#max-two-decimal').inputNumber({ maxDecimalDigits: 2 });
-					});
-				</code></pre>
-				<input id="max-two-decimal" type="text" style="width: 500px" placeholder="Max two decimal" />		
+				<pre><code data-language="javascript">$(document).ready(function(){
+	$('#max-two-decimal').inputNumber({ maxDecimalDigits: 2 });
+});</code></pre>
+				<input id="max-two-decimal" type="text" style="width: 500px" placeholder="Max two decimal" class="form-control" />		
 			</div>
-			<div>
+			<div class="panel panel-default container pad">
 				<p>Allow <b>Leading Zero</b></p>	
 				<ul>
 					<li>allowDecimals: <b>false</b></li>
@@ -99,17 +106,15 @@
 					<li>maxDecimalDigits: <b>unlimited</b></li>
 					<li>numericOnly: <b>true</b> - <span class="important">this will override allowDecimals=false, allowNegative=false, thousandSep=empty string</span></li>
 				</ul>
-				<pre><code data-language="javascript">
-					$(document).ready(function(){
-						$('#allow-leading-zero').inputNumber({ allowLeadingZero: true, thousandSep: '', allowDecimals: false, allowNegative: false });
-					});
-					// Or using shortcut
-					$(document).ready(function(){
-						$('#allow-leading-zero').inputNumber({ allowLeadingZero: true, numericOnly: true });
-					});
-				</code></pre>
+				<pre><code data-language="javascript">$(document).ready(function(){
+	$('#allow-leading-zero').inputNumber({ allowLeadingZero: true, thousandSep: '', allowDecimals: false, allowNegative: false });
+});
+// Or using shortcut
+$(document).ready(function(){
+	$('#allow-leading-zero').inputNumber({ allowLeadingZero: true, numericOnly: true });
+});</code></pre>
 
-				<input id="allow-leading-zero" type="text" style="width: 500px" placeholder="Allow leading zero" />		
+				<input id="allow-leading-zero" type="text" style="width: 500px" placeholder="Allow leading zero" class="form-control" />		
 			</div>
 		</div>
 	</body>
