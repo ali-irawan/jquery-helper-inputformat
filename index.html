@@ -1,0 +1,118 @@
+<html>
+	<head>
+		<link rel="stylesheet" href="css/style.css" />
+		<link rel="stylesheet" href="css/syntax.css" />
+
+		<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+		<script src="lib/rainbow-custom.min.js"></script>
+		<script src="src/paste.js"></script>
+		<script src="src/jquery-inputformat.js"></script>
+		<script>
+			$(document).ready(function(){
+				$('#default').inputNumber();
+				$('#no-negative').inputNumber({ allowNegative: false });
+				$('#no-decimal-negative').inputNumber({ allowDecimals: false, allowNegative: false });
+				$('#max-two-decimal').inputNumber({ maxDecimalDigits: 2 });
+				// $('#allow-leading-zero').inputNumber({ allowLeadingZero: true, thousandSep: '', allowDecimals: false, allowNegative: false });
+				$('#allow-leading-zero').inputNumber({ allowLeadingZero: true, numericOnly: true });
+			});
+		</script>
+	</head>
+	<body>
+		<div class="wrapper">
+			<h1>jQuery InputFormat Demo</h1>
+			<div>
+				<p>Input default</p>	
+				<ul>
+					<li>allowDecimals: <b>true</b></li>
+					<li>allowNegative: <b>true</b></li>
+					<li>allowLeadingZero: <b>false</b></li>
+					<li>thousandSep: <b>,</b></li>
+					<li>decimalSep: <b>.</b></li>
+					<li>maxDecimalDigits: <b>unlimited</b></li>
+				</ul>
+				<pre><code data-language="javascript">
+					$(document).ready(function(){
+						$('#default').inputNumber();
+					});
+				</code></pre>
+				<input id="default" type="text" style="width: 500px" placeholder="Default" />		
+			</div>
+			<div>
+				<p>Input without <b>Negative value</b></p>	
+				<ul>
+					<li>allowDecimals: <b>true</b></li>
+					<li>allowNegative: <b>false</b></li>
+					<li>allowLeadingZero: <b>false</b></li>	
+					<li>thousandSep: <b>,</b></li>
+					<li>decimalSep: <b>.</b></li>
+					<li>maxDecimalDigits: <b>unlimited</b></li>
+				</ul>
+				<pre><code data-language="javascript">
+					$(document).ready(function(){
+						$('#no-negative').inputNumber({ allowNegative: false });
+					});
+				</code></pre>
+				<input id="no-negative" type="text" style="width: 500px" placeholder="No negative" />		
+			</div>
+			<div>
+				<p>Input without <b>Decimals value</b></p>	
+				<ul>
+					<li>allowDecimals: <b>false</b></li>
+					<li>allowNegative: <b>false</b></li>
+					<li>allowLeadingZero: <b>false</b></li>	
+					<li>thousandSep: <b>,</b></li>
+					<li>decimalSep: <b>.</b></li>
+					<li>maxDecimalDigits: <b>unlimited</b></li>
+				</ul>
+				<pre><code data-language="javascript">
+					$(document).ready(function(){
+						$('#no-decimal-negative').inputNumber({ allowDecimals: false, allowNegative: false });
+					});
+				</code></pre>
+				<input id="no-decimal-negative" type="text" style="width: 500px" placeholder="No decimals, No negative" />		
+			</div>
+			<div>
+				<p>Max <b>Decimals value</b> 2 point </p>	
+				<ul>
+					<li>allowDecimals: <b>true</b></li>
+					<li>allowNegative: <b>true</b></li>
+					<li>allowLeadingZero: <b>false</b></li>	
+					<li>thousandSep: <b>,</b></li>
+					<li>decimalSep: <b>.</b></li>
+					<li>maxDecimalDigits: <b>2</b></li>
+				</ul>
+				<pre><code data-language="javascript">
+					$(document).ready(function(){
+						$('#max-two-decimal').inputNumber({ maxDecimalDigits: 2 });
+					});
+				</code></pre>
+				<input id="max-two-decimal" type="text" style="width: 500px" placeholder="Max two decimal" />		
+			</div>
+			<div>
+				<p>Allow <b>Leading Zero</b></p>	
+				<ul>
+					<li>allowDecimals: <b>false</b></li>
+					<li>allowNegative: <b>false</b></li>
+					<li>allowLeadingZero: <b>true</b></li>	
+					<li>thousandSep: <b></b></li>
+					<li>decimalSep: <b>.</b></li>
+					<li>maxDecimalDigits: <b>unlimited</b></li>
+					<li>numericOnly: <b>true</b> - <span class="important">this will override allowDecimals=false, allowNegative=false, thousandSep=empty string</span></li>
+				</ul>
+				<pre><code data-language="javascript">
+					$(document).ready(function(){
+						$('#allow-leading-zero').inputNumber({ allowLeadingZero: true, thousandSep: '', allowDecimals: false, allowNegative: false });
+					});
+					// Or using shortcut
+					$(document).ready(function(){
+						$('#allow-leading-zero').inputNumber({ allowLeadingZero: true, numericOnly: true });
+					});
+				</code></pre>
+
+				<input id="allow-leading-zero" type="text" style="width: 500px" placeholder="Allow leading zero" />		
+			</div>
+		</div>
+	</body>
+
+</html>
