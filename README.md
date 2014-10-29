@@ -5,6 +5,9 @@ jQuery based input formatting
 
 The idea is to create a javascript library for handling number/amount input
 
+[Show demo here](http://projects.solusiteknologi.co.id/jquery-inputformat)
+
+
 Features
 --------
 * thousandSep - thousand separators, default using , (comma)
@@ -39,5 +42,3 @@ $(document).ready(function(){
 	$('#default').inputNumber();
 });
 ```
-
-[More demo here](http://projects.solusiteknologi.co.id/jquery-inputformat)
