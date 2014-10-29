@@ -36,6 +36,7 @@ This sample HTML
 Put some Javascript
 ```javascript
 <script>
+
 $(document).ready(function(){
 	$('#default').inputNumber();
 });
