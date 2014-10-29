@@ -26,20 +26,20 @@ Getting Started
 
 Put in your HTML head
 ```html
-	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-	<script src="src/jquery-inputformat.js"></script>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="src/jquery-inputformat.js"></script>
 ```
 This sample HTML
 ```html
-	<input id="default" type="text" style="width: 500px" placeholder="Default" />	
+<input id="default" type="text" style="width: 500px" placeholder="Default" />	
 ```
 Put some Javascript
 ```javascript
-	<script>
-		$(document).ready(function(){
-			$('#default').inputNumber();
-		});
-	</script>
+<script>
+$(document).ready(function(){
+	$('#default').inputNumber();
+});
+</script>
 ```
 
 [More demo here](http://projects.solusiteknologi.co.id/jquery-inputformat)
