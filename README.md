@@ -41,6 +41,7 @@ $(document).ready(function(){
 	$('#default').inputNumber();
 });
 </script>
+
 ```
 
 [More demo here](http://projects.solusiteknologi.co.id/jquery-inputformat)
