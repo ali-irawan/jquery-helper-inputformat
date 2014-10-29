@@ -1,0 +1,23 @@
+{
+	"name": "jquery-inputformat",
+	"version": "1.0.0",
+	"description": "jQuery based input formating",
+        "author": "Ali Irawan <ali.irawan@solusiteknologi.co.id>",
+	"contributors": [
+		{
+			"name": "Ali Irawan",
+			"email": "ali.irawan@solusiteknologi.co.id"	
+		}
+        ],
+	"keywords": [
+		"input",
+		"format",
+		"mask",
+		"number",
+		"numeric",
+		"amount",
+		"money",
+		"jquery"
+	],
+	"license": "Apache"
+}
