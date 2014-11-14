@@ -1,0 +1,36 @@
+{
+   "name": "jquery-inputformat",
+   "version": "1.0.0",
+   "title": "jQuery input format",
+   "description": "jQuery based input formating",
+   "author": {
+	"name": "jQuery Foundation and other contributors",
+        "url": "https://github.com/ali-irawan/jquery-inputformat/AUTHORS.txt"
+   },
+   "maintainers": [
+        {
+            "name": "Ali Irawan",
+            "email": "boylevantz@gmail.com",
+            "url": "http://wenresearch.com"
+        }
+    ],
+	"keywords": [
+		"input",
+		"format",
+		"mask",
+		"number",
+		"numeric",
+		"amount",
+		"money",
+		"jquery"
+	],
+   "dependencies": {
+        "jquery": ">=1.5"
+   },
+   "licenses": [
+	{
+            "type": "Apache",
+            "url": "https://github.com/ali-irawan/jquery-inputformat/LICENSE"
+        }	
+   ]
+}
