@@ -1,11 +1,8 @@
-String.prototype.splice = function( idx, rem, s ) {
-    return (this.slice(0,idx) + s + this.slice(idx + Math.abs(rem)));
-};
 if (!String.prototype.endsWith) {
   Object.defineProperty(String.prototype, 'endsWith', {
     value: function (searchString, position) {
       var subjectString = this.toString();
-      if (position === undefined || position > subjectString.length) {
+      if (position = undefined || position > subjectString.length) {
         position = subjectString.length;
       }
       position -= searchString.length;
@@ -121,7 +118,7 @@ $.inputformat = {
              }
 	     // Remove all thousand separators from rounded
              rounded = $.inputformat.replaceAll(_thousandSep, '', rounded.toString());
-             if(decimals!=''){
+             if(decimals!==''){
 		  result = rounded + _decimalSep + decimals; 
 	     }
 	     else result = rounded;
@@ -129,6 +126,9 @@ $.inputformat = {
 	     if(!_isAllowLeadingZero){
 		// remove all leading zero when unformatting
 		// result = "" + parseFloat(result);		
+		while(result.charAt(0)=='0'){
+			result = result.substring(1);
+		}
 	     }
              return result;
         },
@@ -151,10 +151,10 @@ $.inputformat = {
                       decimals = unformatted.substring(dot+1);
                    } else decimals = '';
              }
-	     var formatted = rounded.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1" + _thousandSep)
+	     var formatted = rounded.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1" + _thousandSep);
 	     if(dot != -1){
                // if dot at the end, do not remove it
-	       if(decimals!='') 
+	       if(decimals!=='') 
                    formatted = formatted + _decimalSep + decimals; 
 	     }
              return formatted;
@@ -162,32 +162,32 @@ $.inputformat = {
 };
 $.fn.inputNumber = function(options){
    	
-   if(options!=undefined){
+   if(options!==undefined){
 	
-	if(options.thousandSep==undefined) options.thousandSep = $.inputformat.defaultOptions.thousandSep;
-	if(options.decimalSep==undefined) options.decimalSep = $.inputformat.defaultOptions.decimalSep;
-	if(options.maxDecimalDigits!=undefined) {
+	if(options.thousandSep===undefined) options.thousandSep = $.inputformat.defaultOptions.thousandSep;
+	if(options.decimalSep===undefined) options.decimalSep = $.inputformat.defaultOptions.decimalSep;
+	if(options.maxDecimalDigits!==undefined) {
 		if(options.maxDecimalDigits!='unlimited' && isNaN(options.maxDecimalDigits)){
 			throw "maxDecimalDigits must a number or 'unlimited'";
 		} 
 	} else options.maxDecimalDigits = $.inputformat.defaultOptions.maxDecimalDigits;
-	if(options.allowDecimals!=undefined) {
+	if(options.allowDecimals!==undefined) {
 		if(options.allowDecimals!==true && options.allowDecimals!==false){
 			throw "allowDecimals must boolean";
 		}
 	} else options.allowDecimals = $.inputformat.defaultOptions.allowDecimals;
-	if(options.allowNegative!=undefined) {
+	if(options.allowNegative!==undefined) {
 		if(options.allowNegative!==true && options.allowNegative!==false){
 			throw "allowNegative must boolean";
 		}
 	} else options.allowNegative = $.inputformat.defaultOptions.allowNegative;	
-	if(options.allowLeadingZero!=undefined) {
+	if(options.allowLeadingZero!==undefined) {
 		if(options.allowLeadingZero!==true && options.allowLeadingZero!==false){
 			throw "allowNegative must boolean";
 		}
 	} else options.allowLeadingZero = $.inputformat.defaultOptions.allowLeadingZero;
 
-	if(options.numericOnly!=undefined){
+	if(options.numericOnly!==undefined){
 		if(options.numericOnly!==true && options.numericOnly!==false){
 			throw "numericOnly must boolean";
 		}
@@ -259,7 +259,7 @@ $.fn.inputNumber = function(options){
 	 }
    });
    $(this).keydown(function(event){
-         // console.log(event);
+         console.log(event);
          var pos = $.inputformat.getCaretPosition(this);
 	 var value = $(this).val();
 	 var _thousandSep = $.inputformat.getThousandSep(this);
@@ -292,8 +292,8 @@ $.fn.inputNumber = function(options){
 			if(!_isAllowLeadingZero){
 				if($.inputformat.getSelectionText()==value){}
 				// leading zero is not allowed
-				else if(pos==0 && value!='') event.preventDefault();
-				else if(pos==1 && value=='0') event.preventDefault();
+				else if(pos===0 && value!=='') event.preventDefault();
+				else if(pos==1 && value==='0') event.preventDefault();
 			}
 
 			// If type number behind ., limit by maxDecimalDigits
@@ -306,14 +306,15 @@ $.fn.inputNumber = function(options){
 				event.preventDefault();			
 			    }	
 			}
+			break;
 		case 49: case 50: case 51: case 52: case 53: case 54:
                 case 55: case 56: case 57:
-                  if(pos==0 && value.indexOf('-')==0) event.preventDefault(); 
+                  if(pos===0 && value.indexOf('-')===0) event.preventDefault(); 
 
 		  // Check allow leading zero
 		  if(!_isAllowLeadingZero){
 				// leading zero is not allowed
-				if(pos==1 && value=='0') event.preventDefault();
+				if(pos==1 && value==='0') event.preventDefault();
 		  }	
 
 		  // Check to max decimal digits
@@ -323,20 +324,22 @@ $.fn.inputNumber = function(options){
 			else {
 			    // Check whether behind decimalSep already have number equals to max
 			    // Cursor pos must after decimal sep to be checken	
-			    var n = value.lastIndexOf(_decimalSep);
-			    if(n!=-1 && pos > n && value.length - n == _maxDigits+1) {
+			    var m = value.lastIndexOf(_decimalSep);
+			    if(m!=-1 && pos > m && value.length - m == _maxDigits+1) {
 				event.preventDefault();			
 			    }	
 			}
 
                   break;
 		case 36: // HOME
+		case 9:  // TAB
 		case 8:  // BACK SPACE
 			if(value.substr(pos-1,1)==_thousandSep){
 				// remove the thousandSep immediately
                                 value = value.substr(0,pos) + value.substr(pos);
 				$(this).val(value);
                         }
+			break;
 		case 46: //DELETE
 		case 35: // END
 		case 37: // LEFT ARROW
@@ -361,7 +364,7 @@ $.fn.inputNumber = function(options){
 			event.preventDefault();
 		  }else{
 			// check current value cannot start with -
-                        if(value.indexOf('-')==0) event.preventDefault();
+                        if(value.indexOf('-')===0) event.preventDefault();
 		  }
 		  break;
                 default:

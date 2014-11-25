@@ -261,32 +261,33 @@ $.fn.inputNumber = function(options){
    $(this).keydown(function(event){
          // console.log(event);
          var pos = $.inputformat.getCaretPosition(this);
-	 var value = $(this).val();
-	 var _thousandSep = $.inputformat.getThousandSep(this);
-	 var _decimalSep = $.inputformat.getDecimalSep(this);
-	 var _maxDigits = $.inputformat.getMaxDecimalDigits(this);
-	 var _isAllowLeadingZero = $.inputformat.isAllowLeadingZero(this);
+	 	 var value = $(this).val();
+	 	 var _thousandSep = $.inputformat.getThousandSep(this);
+	 	 var _decimalSep = $.inputformat.getDecimalSep(this);
+	 	 var _maxDigits = $.inputformat.getMaxDecimalDigits(this);
+	 	 var _isAllowLeadingZero = $.inputformat.isAllowLeadingZero(this);
 
 	 $.inputformat.oldValue = value;
 	 if(event.ctrlKey){
 	      switch(event.keyCode){
-		case 65: // Ctrl A
-                case 67: // Ctrl C
-		        break;	
-		case 88: // Ctrl X
-			event.preventDefault();
-			break;
-		case 86: // Ctrl V
-			event.preventDefault();
-			break;			
-		default:
-			event.preventDefault();
+				case 65: // Ctrl A
+		                case 67: // Ctrl C
+				        break;	
+				case 88: // Ctrl X
+					event.preventDefault();
+					break;
+				case 86: // Ctrl V
+					event.preventDefault();
+					break;			
+				default:
+					event.preventDefault();
               }	
               return;
          }	
 
          switch(event.keyCode){
 	        // must numeric
+	    case 96: // from numpad 0    
 		case 48: 
 			// Check allow leading zero
 			if(!_isAllowLeadingZero){
@@ -307,6 +308,12 @@ $.fn.inputNumber = function(options){
 			    }	
 			}
 			break;
+
+		// Number from Numlock 1-9
+		case 97: case 98: case 99: case 100: case 101: case 102:
+		case 103: case 104: case 105:
+
+		// Number	
 		case 49: case 50: case 51: case 52: case 53: case 54:
                 case 55: case 56: case 57:
                   if(pos===0 && value.indexOf('-')===0) event.preventDefault(); 
@@ -332,6 +339,7 @@ $.fn.inputNumber = function(options){
 
                   break;
 		case 36: // HOME
+		case 9:  // TAB
 		case 8:  // BACK SPACE
 			if(value.substr(pos-1,1)==_thousandSep){
 				// remove the thousandSep immediately
@@ -344,6 +352,8 @@ $.fn.inputNumber = function(options){
 		case 37: // LEFT ARROW
 		case 39: // RIGHT ARROW
 		  break;
+
+		case 110: // '.' from num pad  
 		case 190: // '.'
 	
 		  // If allowDecimals set to false, prevent it immediately
@@ -354,6 +364,7 @@ $.fn.inputNumber = function(options){
 		  // must only at end
 	          if(pos < value.length) event.preventDefault(); 		
                   break;
+        case 109: // '-' from numpad          
 		case 189: // '-'
 		  // If allowNegative set to false, prevent it immediately
 		  if($.inputformat.isAllowNegative(this)!==true) event.preventDefault();
