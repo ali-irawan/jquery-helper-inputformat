@@ -91,6 +91,9 @@ QUnit.test( "unformat test", function( assert ) {
 
 	assert.ok($.inputformat.unformat($('#input'), $('#input').val()) == '3500590', "Passed!" );
 
+	$('#input').val("0");
+	
+	assert.ok($.inputformat.unformat($('#input'), $('#input').val()) == '0', "Passed!" );
 });
 QUnit.test( "format test", function( assert ) {
 
