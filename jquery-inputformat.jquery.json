@@ -1,8 +1,8 @@
 {
-   "name": "jquery-inputformat.jquery",
+   "name": "helper-inputformat",
    "version": "1.0.0",
-   "title": "jQuery input format",
-   "description": "jQuery based input formating",
+   "title": "jQuery Helper - InputFormat",
+   "description": "jQuery Helper for input formatting",
    "author": {
 	"name": "jQuery Foundation and other contributors",
         "url": "https://github.com/ali-irawan/jquery-inputformat/AUTHORS.txt"
